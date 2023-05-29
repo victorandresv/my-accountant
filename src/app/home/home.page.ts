@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import moneyList from '../../assets/money-list-es.json';
 
 @Component({
   selector: 'app-home',
@@ -7,9 +8,13 @@ import { Component } from '@angular/core';
 })
 export class HomePage {
 
-  constructor() {}
+  moneyList:any;
 
-  AddWallet(money:string){
+  constructor() {
+    this.moneyList = moneyList;
+  }
+
+  AddWallet(){
 
   }
 

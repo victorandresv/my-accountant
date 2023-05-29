@@ -11,6 +11,41 @@
     </ion-toolbar>
   </ion-header>
 
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Nueva Cartera</ion-card-title>
+      <ion-card-subtitle>Cree una nueva cartera para manejar sus registros financieros</ion-card-subtitle>
+    </ion-card-header>
   
+    <ion-list>
+      <ion-item>
+        <ion-input type="text" label="Nombre" id="name" name="name"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-list>
+          <ion-row>
+            <ion-col>
+              <label>
+                <br>
+                Moneda
+              </label>
+            </ion-col>
+            <ion-col>
+              <ion-item>
+                <ion-select aria-label="Moneda" placeholder="Seleciona moneda">
+                  <ion-select-option value="{{item.money}}" *ngFor="let item of moneyList">{{item.name}}</ion-select-option>
+                </ion-select>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+        </ion-list>
+      </ion-item>
+    </ion-list>
+  
+    <ion-button class="ion-padding" (click)="AddWallet()">Aceptar</ion-button>  
+      
+    <div style="margin-bottom: 30px;"></div>
+    
+  </ion-card>
 
 </ion-content>
