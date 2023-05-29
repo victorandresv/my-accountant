@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Route, Router } from '@angular/router';
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import { HomePage } from '../home/home.page';
 
 @Component({
   selector: 'app-login',
@@ -12,10 +14,14 @@ export class LoginPage implements OnInit {
   password: string = "";
 
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit() {
-
+    getAuth().onAuthStateChanged(user => {
+      if(!user?.isAnonymous){
+        this.router.navigate(['/home'])
+      }
+    });
   }
 
   LoginAction() {
@@ -23,7 +29,9 @@ export class LoginPage implements OnInit {
       signInWithEmailAndPassword(getAuth(), this.email, this.password)
         .then((userCredential) => {
           const user = userCredential.user;
-          console.log(user);
+          if (!user.isAnonymous){
+            this.router.navigate(['/home'])
+          }
         })
         .catch((error) => {
           const errorCode = error.code;

@@ -24,3 +24,9 @@
 @import "@ionic/angular/css/text-alignment.css";
 @import "@ionic/angular/css/text-transformation.css";
 @import "@ionic/angular/css/flex-utils.css";
+
+.button img{
+    border:solid 2px black;
+    border-radius:10px;
+    box-shadow: 1px 1px 10px #444;
+}
