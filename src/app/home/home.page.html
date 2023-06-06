@@ -19,9 +19,6 @@
   
     <ion-list>
       <ion-item>
-        <ion-input type="text" label="Nombre" id="name" name="name"></ion-input>
-      </ion-item>
-      <ion-item>
         <ion-list>
           <ion-row>
             <ion-col>
@@ -33,7 +30,7 @@
             <ion-col>
               <ion-item>
                 <ion-select aria-label="Moneda" placeholder="Seleciona moneda">
-                  <ion-select-option value="{{item.money}}" *ngFor="let item of moneyList">{{item.name}}</ion-select-option>
+                  <ion-select-option *ngFor="let item of moneyList">{{item.name}}</ion-select-option>
                 </ion-select>
               </ion-item>
             </ion-col>

@@ -1,0 +1,23 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>{{pageTitle}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">{{pageTitle}}</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-fab slot="fixed" vertical="top" horizontal="end" [edge]="true">
+    <ion-fab-button id="open-action-sheet">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+  <ion-action-sheet trigger="open-action-sheet" header="Nuevo movimiento de dinero" [buttons]="actionSheetButtons"></ion-action-sheet>
+  
+</ion-content>
