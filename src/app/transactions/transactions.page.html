@@ -13,11 +13,31 @@
   </ion-header>
 
   <ion-fab slot="fixed" vertical="top" horizontal="end" [edge]="true">
-    <ion-fab-button id="open-action-sheet">
-      <ion-icon name="add"></ion-icon>
+    <ion-fab-button>
+      <ion-icon name="wallet"></ion-icon>
     </ion-fab-button>
+    <ion-fab-list side="bottom">
+      <ion-fab-button id="add-money-input" color="primary">
+        <ion-icon name="add"></ion-icon>
+      </ion-fab-button>
+      <ion-fab-button id="remove-money-input" color="danger">
+        <ion-icon name="remove"></ion-icon>
+      </ion-fab-button>
+    </ion-fab-list>
   </ion-fab>
 
-  <ion-action-sheet trigger="open-action-sheet" header="Nuevo movimiento de dinero" [buttons]="actionSheetButtons"></ion-action-sheet>
-  
+  <ion-alert
+    trigger="add-money-input"
+    header="¿A que corresponde la entrada de dinero?"
+    [buttons]="alertButtons"
+    [inputs]="alertInputs">
+  </ion-alert>
+
+  <ion-alert
+    trigger="remove-money-input"
+    header="¿A que corresponde la salida de dinero?"
+    [buttons]="alertButtons"
+    [inputs]="alertInputs">
+  </ion-alert>
+
 </ion-content>

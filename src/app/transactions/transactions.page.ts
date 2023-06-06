@@ -7,34 +7,25 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TransactionsPage implements OnInit {
 
-  pageTitle: string;
+  public pageTitle: string;
 
   constructor() { 
     this.pageTitle = "Transacciones";
   }
 
-  public actionSheetButtons = [
+  public alertButtons = ['Aceptar','Cancelar'];
+
+  public alertInputs = [
     {
-      text: 'Entrada de dinero',
-      role: 'destructive',
-      data: {
-        action: 'delete',
-      },
+      type: 'text',
+      placeholder: 'Descripción',
     },
     {
-      text: 'Salida de dinero',
-      data: {
-        action: 'share',
-      },
-    },
-    {
-      text: 'Cancelar',
-      role: 'cancel',
-      data: {
-        action: 'cancel',
-      },
+      type: 'number',
+      placeholder: 'Cantidad'
     },
   ];
+
 
   ngOnInit() {
   }
