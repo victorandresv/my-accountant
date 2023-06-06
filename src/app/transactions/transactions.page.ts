@@ -9,6 +9,8 @@ import { TransactionsService } from '../services/transactions.service';
 export class TransactionsPage implements OnInit {
 
   public pageTitle: string;
+  public sumInputs: number = 0;
+  public sumOutputs: number = 0;
 
   constructor(public transactions:TransactionsService) { 
     this.pageTitle = "Transacciones";
@@ -36,6 +38,8 @@ export class TransactionsPage implements OnInit {
 
 
   ngOnInit() {
+    this.sumInputs = this.transactions.SumInputs();
+    this.sumOutputs = this.transactions.SumOutputs();
   }
 
 }

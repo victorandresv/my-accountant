@@ -9,17 +9,16 @@ export class TransactionsService {
   public inputsMoney: BlockMoney[];
   public outputsMoney: BlockMoney[];
 
-  constructor() { 
+  constructor() {
     this.inputsMoney = [];
     this.outputsMoney = [];
 
-    if(localStorage.getItem('moneyInputs') != null){
-      let data:any = localStorage.getItem('moneyInputs');
+    if (localStorage.getItem('moneyInputs') != null) {
+      let data: any = localStorage.getItem('moneyInputs');
       this.inputsMoney = JSON.parse(data);
     }
-    console.log(this.inputsMoney);
 
-    if(this.inputsMoney.length == 0){
+    if (this.inputsMoney.length == 0) {
       this.inputsMoney.push({
         type: 'in',
         currency: 'brl',
@@ -28,14 +27,47 @@ export class TransactionsService {
     }
   }
 
-  public AddTransaction(name:string, quantity: number){
+  public SumInputs() {
+    const i = 0;
+    let sum = 0;
+    try {
+      for (let n = 0; n < this.inputsMoney[i].items.length; n++) {
+        sum += this.inputsMoney[i].items[n].quantity;
+      }
+    } catch (e) { }
+    return sum;
+  }
+
+  public SumOutputs() {
+    const i = 0;
+    let sum = 0;
+    try {
+      for (let n = 0; n < this.outputsMoney[i].items.length; n++) {
+        sum += this.outputsMoney[i].items[n].quantity;
+      }
+    } catch (e) { }
+    return sum;
+  }
+
+  public AddTransaction(name: string, quantity: number) {
     this.inputsMoney[0].items.push({
       description: name,
       quantity: quantity,
-      date: new Date().getSeconds().toString(),
+      date: new Date().getTime().toString(),
     });
 
     localStorage.setItem('moneyInputs', JSON.stringify(this.inputsMoney));
-
   }
+
+  public RemoveTransaction(name: string, quantity: number) {
+    this.outputsMoney[0].items.push({
+      description: name,
+      quantity: quantity,
+      date: new Date().getTime().toString(),
+    });
+
+    localStorage.setItem('moneyOutputs', JSON.stringify(this.outputsMoney));
+  }
+
+
 }
